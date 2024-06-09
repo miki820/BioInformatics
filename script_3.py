@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from Bio.Seq import Seq
 
 
+# Function to find positions and percentage of a nucleotide in a sequence
 def find_nucleotide(sequence, nucleotide):
     position = []
     percentage_at_position = []
@@ -21,6 +22,7 @@ def find_nucleotide(sequence, nucleotide):
     return position, percentage_at_position
 
 
+# Function to plot the distribution of a nucleotide in the sequence
 def plot(positions, percentage, nucleotide):
     plt.figure(figsize=(12, 8))
     plt.plot(positions, percentage)
@@ -39,10 +41,14 @@ with open(file_path, 'r') as file:
 sequence = Seq(dna_sequence)
 nucleotide = input("Podaj nukleotyd: ")
 length_of_seq = len(sequence)
+
+# Counting the occurrences of the nucleotide
 nucleotide_composition = sequence.count(nucleotide)
 
 print("Percentage: ", round(nucleotide_composition/length_of_seq * 100, 2), "%")
 
 find_nucleotide(sequence, nucleotide)
+
+# Finding positions and percentage of the nucleotide in the sequence
 positions, percentage = find_nucleotide(sequence, nucleotide)
 plot(positions, percentage, nucleotide)
